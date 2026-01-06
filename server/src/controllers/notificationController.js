@@ -17,3 +17,16 @@ export const markAsRead = async (req, res) => {
 
   res.json({ message: "Marked as read" });
 };
+
+export const markAllRead = async (req, res) => {
+  await Notification.updateMany(
+    { user: req.user._id, isRead: false },
+    { isRead: true }
+  );
+  res.json({ message: "All notifications marked as read" });
+};
+
+export const clearAllNotifications = async (req, res) => {
+  await Notification.deleteMany({ user: req.user._id });
+  res.json({ message: "All notifications cleared" });
+};

@@ -24,3 +24,44 @@ body {
   color: var(--foreground); */
   font-family: Arial, Helvetica, sans-serif;
 }
+/* Cinematic slow zoom (Ken Burns effect) */
+
+
+@keyframes slowZoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}
+
+
+@keyframes zoomSlow {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}
+
+.cinematic-zoom {
+  animation: zoomSlow 8s ease-in-out forwards;
+}
+
+@keyframes badgeGlow {
+  0% {
+    box-shadow: 0 0 0 rgba(251, 191, 36, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(251, 191, 36, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 0 rgba(251, 191, 36, 0.4);
+  }
+}
+
+.badge-glow {
+  animation: badgeGlow 2.5s ease-in-out infinite;
+}

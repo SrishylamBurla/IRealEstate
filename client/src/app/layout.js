@@ -1,23 +1,4 @@
-// import SocketProvider from "@/components/SocketProvider";
-// import "./globals.css";
-// import Navbar from "../components/Navbar";
 
-// export default function RootLayout({ children }) {
-//   const user =
-//     typeof window !== "undefined"
-//       ? JSON.parse(localStorage.getItem("user"))
-//       : null;
-
-//   return (
-//     <html>
-//       <body>
-//         {user && <SocketProvider userId={user._id} />}
-//         <Navbar />
-//         {children}
-//       </body>
-//     </html>
-//   );
-// }
 
 
 import "./globals.css";
@@ -42,3 +23,5 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+
+

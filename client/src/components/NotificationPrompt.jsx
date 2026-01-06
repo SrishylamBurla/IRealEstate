@@ -31,8 +31,8 @@ export default function NotificationPrompt({ onEnabled }) {
     // console.log("🔥 FCM Token:", token);
 
     await updatePref({
-  pushSubscription: subscriptionObject,
-});
+      pushSubscription: subscriptionObject,
+    });
 
     onEnabled?.();
     setShow(false);

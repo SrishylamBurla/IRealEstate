@@ -10,11 +10,11 @@ import connectDB from "./src/config/db.js";
 import "./src/config/cloudinary.js";
 import "./src/jobs/emailRetryJob.js";
 
-import authRoutes from "./src/routes/authRoutes.js";
 import propertyRoutes from "./src/routes/propertyRoutes.js";
 import inquiryRoutes from "./src/routes/inquiryRoutes.js";
 import adminRoutes from "./src/routes/adminRoutes.js";
 import notificationRoutes from "./src/routes/notificationRoutes.js"
+import subscriptionRoutes from "./src/routes/subscriptionRoutes.js"
 import userRoutes from "./src/routes/userRoutes.js"
 import { sendPush } from "./src/utils/push.js";
 
@@ -36,17 +36,18 @@ app.use(express.json());
 app.use(morgan("dev"));
 
 startCleanupJob()
-
-app.use("/api/auth", authRoutes);
+app.use("/api/users", userRoutes);
+// app.use("/api/auth", authRoutes);
 app.use("/api/properties", propertyRoutes);
 app.use("/api/inquiries", inquiryRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/notifications", notificationRoutes);
-app.use("/api/users", userRoutes);
+app.use("/api/subscribe", subscriptionRoutes);
 
 
 app.get("/test-push", async (req, res) => {
   const token = "PASTE_AGENT_PUSH_TOKEN_HERE";
+
 
   await sendPush({
     token,

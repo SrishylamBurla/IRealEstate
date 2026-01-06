@@ -14,7 +14,7 @@ const emailLogSchema = new mongoose.Schema(
 
     type: {
       type: String,
-      enum: ["approve", "reject", "undo"],
+      enum: ["approve", "reject", "undo", "password_reset", "login_otp", "otp", "password_changed"],
       required: true,
     },
 

@@ -97,7 +97,7 @@ export default function AgentPropertiesPage() {
           <div>
             <Link
               href="/agent/add-property"
-              className="border-1 text-black px-2 py-1 rounded mr-2"
+              className="border text-black px-2 py-1 rounded mr-2"
             >
               + Add Property
             </Link>
@@ -134,56 +134,59 @@ export default function AgentPropertiesPage() {
 
 function PropertyCard({ property, onDelete, isDeleting }) {
   return (
-    <Link href={`/agent/properties/${property._id}`}>
-      <div className="rounded-lg overflow-hidden shadow-md flex flex-col">
-        <div className="h-40 bg-gray-200">
-          {property.images?.[0] ? (
+    // <Link href={`/agent/properties/${property._id}`}>
+    <div className="rounded-lg overflow-hidden shadow-md flex flex-col">
+      <div className="h-40 bg-gray-200">
+        {property.images?.[0] ? (
+          <Link href={`/agent/properties/${property._id}`}>
             <img
               src={property.images[0]}
               alt={property.title}
               className="w-full h-full object-cover"
             />
-          ) : (
-            <div className="w-full h-full flex items-center justify-center text-gray-500">
-              No Image
-            </div>
-          )}
-        </div>
+          </Link>
+        ) : (
+          <div className="w-full h-full flex items-center justify-center text-gray-500">
+            No Image
+          </div>
+        )}
+      </div>
 
-        <div className="p-4 space-y-1 flex-1">
+      <div className="p-4 space-y-1 flex-1">
+        <Link href={`/agent/properties/${property._id}`}>
           <h2 className="font-semibold text-lg">{property.title}</h2>
 
           <p className="text-sm text-gray-600">{property.location?.city}</p>
+        </Link>
+        <p className="font-medium text-blue-600">
+          ₹{property.price.toLocaleString()}
+        </p>
 
-          <p className="font-medium text-blue-600">
-            ₹{property.price.toLocaleString()}
-          </p>
-
-          <div className="flex justify-between">
-            {!property.rejectionReason && (
-              <StatusBadge approved={property.isApproved} />
-            )}
-            {/* <p className="text-xs text-gray-500">Views: {property.views}</p> */}
-          </div>
-          {!property.isApproved && property.rejectionReason && (
-            <div className="space-y-2">
-              <div className=" text-center bg-red-100 px-2 py-1 rounded">
-                <p className="text-red-600 font-bold">Rejected</p>
-                <p className="text-xs text-gray-600 mt-1">
-                  Reason: {property.rejectionReason}
-                </p>
-              </div>
-              <Link
-                href={`/agent/properties/${property._id}/edit?resubmit=true`}
-                className="block text-sm text-center bg-yellow-400 text-white px-3 py-1 rounded"
-              >
-                Edit & Resubmit
-              </Link>
-            </div>
+        <div className="flex justify-between">
+          {!property.rejectionReason && (
+            <StatusBadge approved={property.isApproved} />
           )}
+          {/* <p className="text-xs text-gray-500">Views: {property.views}</p> */}
         </div>
+        {!property.isApproved && property.rejectionReason && (
+          <div className="space-y-2">
+            <div className=" text-center bg-red-100 px-2 py-1 rounded">
+              <p className="text-red-600 font-bold">Rejected</p>
+              <p className="text-xs text-gray-600 mt-1">
+                Reason: {property.rejectionReason}
+              </p>
+            </div>
+            <Link
+              href={`/agent/properties/${property._id}/edit?resubmit=true`}
+              className="block text-sm text-center bg-yellow-400 text-white px-3 py-1 rounded"
+            >
+              Edit & Resubmit
+            </Link>
+          </div>
+        )}
+      </div>
 
-        {/* 
+      {/* 
       <div className="flex border-t text-sm">
         <Link
           href={`/agent/properties/${property._id}/edit`}
@@ -200,8 +203,8 @@ function PropertyCard({ property, onDelete, isDeleting }) {
           Delete
         </button>
       </div> */}
-      </div>
-    </Link>
+    </div>
+    // </Link>
   );
 }
 

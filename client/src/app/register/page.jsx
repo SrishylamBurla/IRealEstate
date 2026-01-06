@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useRegisterMutation } from "@/features/auth/authApi";
+import { useRegisterMutation } from "@/features/users/userApi";
 import { useRouter } from "next/navigation";
 
 export default function RegisterPage() {
